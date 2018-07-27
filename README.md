@@ -42,7 +42,7 @@ $ php artisan dusk --filter=CrudUserTest
 
 * **Herminio Heredia**
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/hersan/laravel-crud-example/graphs/contributors) who participated in this project.
 
 ## License
 
