@@ -32,7 +32,7 @@ class CrudServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../tests' => base_path('tests'),
-        ], 'crud');
+        ], 'crudtests');
     }
 
     public function publishViews()
