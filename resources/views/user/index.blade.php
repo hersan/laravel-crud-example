@@ -25,11 +25,7 @@
                                     <div class="btn-group">
                                         <a class="btn btn-info btn-sm" href="{{route('users.show', ['user' => $user->id])}}">Show</a>
                                         <a class="btn btn-info btn-sm" href="{{route('users.edit', ['user' => $user->id])}}">Edit</a>
-                                        <form action="{{route('users.destroy', ['user' => $user->id])}}" method="post">
-                                            @csrf
-                                            {!! method_field('delete') !!}
-                                        <button type="submit" class="btn btn-sm btn-danger" title="Delete" data-toggle="tooltip">Delete</button>
-                                        </form>
+                                        <a id="delete-{{$user->id}}" class="btn btn-danger btn-sm" href="{{route('users.destroy', [$user->id])}}  " class="btn btn-danger" data-method="delete">Delete</a>
                                     </div>
                                 </td>
                             </tr>
