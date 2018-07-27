@@ -6,6 +6,12 @@ Example of laravel package
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+### Prerequisites
+
+make sure you have in your system
+
++ Php 7
++ Laravel 5.6
 
 ### Installing
 
@@ -42,7 +48,7 @@ $ php artisan dusk --filter=CrudUserTest
 
 * **Herminio Heredia**
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/hersan/laravel-crud-example/graphs/contributors) who participated in this project.
 
 ## License
 
