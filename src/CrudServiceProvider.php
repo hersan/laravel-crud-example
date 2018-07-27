@@ -25,7 +25,7 @@ class CrudServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->mergeConfigFrom(__DIR__.'/../config/crud.php', 'crud');
     }
 
     public function publishTests()
@@ -42,6 +42,11 @@ class CrudServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/crud'),
         ], 'crud');
+    }
+
+    public function publishConfig()
+    {
+        $this->publishes([__DIR__.'/../config/crud.php' => config_path('crud.php')], 'crud');
     }
 
     public function resolvingControllers()
