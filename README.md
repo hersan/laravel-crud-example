@@ -6,6 +6,10 @@ Example of laravel package
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+### Prerequisites
+
++ Php 7
++ Laravel 5.6
 
 ### Installing
 
