@@ -8,6 +8,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
+make sure you have in your system
+
 + Php 7
 + Laravel 5.6
 
