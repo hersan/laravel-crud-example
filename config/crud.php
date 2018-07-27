@@ -1,1 +1,5 @@
 <?php
+
+return [
+    'authentication' => true,
+];
