@@ -21,7 +21,7 @@ class CrudUserTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('Laravel');
+                ->assertSee('Laravel');
         });
     }
 
@@ -33,8 +33,9 @@ class CrudUserTest extends DuskTestCase
      */
     public function it_show_all_users()
     {
-        $this->browse(function(Browser $browser){
-            $browser->visit('/users')
+        $this->browse(function(Browser $browser) {
+            $browser->loginAs(factory(User::class)->create())
+                ->visit('/users')
                 ->assertSee('User List')
             ;
         });
@@ -50,7 +51,8 @@ class CrudUserTest extends DuskTestCase
     {
         $this->browse(function(Browser $browser){
 
-            $browser->visit('/users/create')
+            $browser->loginAs(factory(User::class)->create())
+                ->visit('/users/create')
                 ->assertSee('New User')
                 ->type('name', 'John Doe')
                 ->type('email', 'john.doe@hotmail.com')
@@ -78,7 +80,8 @@ class CrudUserTest extends DuskTestCase
         $user = factory(User::class)->create();
 
         $this->browse(function(Browser $browser) use($user) {
-            $browser->visit("/users/$user->id/edit")
+            $browser->loginAs(factory(User::class)->create())
+                ->visit("/users/$user->id/edit")
                 ->assertSee('Edit User')
                 ->value('#name', $user->name)
                 ->value('#email', $user->email)
@@ -109,7 +112,8 @@ class CrudUserTest extends DuskTestCase
         $user = factory(User::class)->create();
 
         $this->browse(function(Browser $browser) use($user) {
-            $browser->visit("/users/$user->id")
+            $browser->loginAs(factory(User::class)->create())
+                ->visit("/users/$user->id")
                 ->assertSee('Show User')
                 ->assertSee($user->name)
                 ->assertSee($user->email)
@@ -128,7 +132,8 @@ class CrudUserTest extends DuskTestCase
         $user = factory(User::class)->create();
 
         $this->browse(function(Browser $browser) use($user) {
-            $browser->visit('/users')
+            $browser->loginAs(factory(User::class)->create())
+                ->visit('/users')
                 ->assertSee('User List')
                 ->click("#delete-{$user->id}")
                 ->assertPathIs("/users")
