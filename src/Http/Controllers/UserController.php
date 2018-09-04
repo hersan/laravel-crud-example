@@ -2,8 +2,10 @@
 
 namespace Hersan\CrudExample\Http\Controllers;
 
+use App\Services\Presenter\UserPresenter;
 use App\User;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -35,8 +37,9 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function store(Request $request)
     {
@@ -58,12 +61,13 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
+     * @param  \App\User $user
+     * @return UserPresenter
      */
     public function show(User $user)
     {
-        return view('crud::user.show', compact('user'));
+        //return view('crud::user.show', ['user' => $user]);
+        return new UserPresenter($user);
     }
 
     /**
@@ -95,7 +99,7 @@ class UserController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => $request->password ?? Hash::make($request->password),
         ]);
 
         return back()->with('success', 'The user was updated');
